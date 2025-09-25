@@ -1,0 +1,18 @@
+[
+  {
+    "category": "mobile-phones",
+    "title": "Trending Mobile Phones",
+    "items": [
+      { "asin": "B0CXXXXXX", "url": "https://www.amazon.in/dp/B0CXXXXXX" },
+      { "asin": "B0DYYYYYY", "url": "https://www.amazon.in/dp/B0DYYYYYY" }
+    ]
+  },
+  {
+    "category": "smartwatches",
+    "title": "Trending Smartwatches",
+    "items": [
+      { "asin": "B0EZZZZZZ", "url": "https://www.amazon.in/dp/B0EZZZZZZ" },
+      { "asin": "B0FAAAAAA", "url": "https://www.amazon.in/dp/B0FAAAAAA" }
+    ]
+  }
+]

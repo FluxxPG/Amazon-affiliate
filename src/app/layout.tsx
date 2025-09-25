@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Container from "@/components/Container";
 import { Providers } from "./providers";
 
 const geistSans = Geist({
@@ -20,8 +21,10 @@ export const metadata: Metadata = {
     default: "Tech Guide Hub",
     template: "%s | Tech Guide Hub",
   },
-  description: "Honest, data-driven electronics reviews and buying guides that save you money.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com"),
+  description: "US-focused electronics reviews, buying guides, and deal picks.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://reconcileai.in"),
+  openGraph: { locale: "en_US", siteName: "Tech Guide Hub" },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
@@ -30,11 +33,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
           <Navbar />
-          <main className="mx-auto max-w-6xl px-4">{children}</main>
+          <main className="py-8 sm:py-10">
+            <Container>{children}</Container>
+          </main>
           <Footer />
         </Providers>
       </body>

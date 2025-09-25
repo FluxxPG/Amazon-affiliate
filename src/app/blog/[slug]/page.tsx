@@ -8,13 +8,15 @@ import RelatedPosts from "@/components/RelatedPosts";
 import BackToTop from "@/components/BackToTop";
 import Comments from "@/components/Comments";
 import { HelpfulVote, SimplePoll } from "@/components/Engagement";
+import { mdxComponents } from "@/components/MDX";
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return {};
   const url = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
   const title = post.title;
@@ -30,8 +32,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function PostPage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return notFound();
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -49,7 +52,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
     <article className="prose dark:prose-invert max-w-none py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <h1>{post.title}</h1>
-      <p className="text-sm text-gray-500">{new Date(post.date).toLocaleDateString()} · {post.readingTimeMinutes} min read</p>
+      <p className="text-sm text-gray-500">{new Date(post.date).toISOString().slice(0,10)} · {post.readingTimeMinutes} min read</p>
       <div className="my-4"><Disclaimer /></div>
       {post.affiliateLinks?.length ? (
         <div className="my-6 flex gap-3 flex-wrap">
@@ -58,9 +61,14 @@ export default function PostPage({ params }: { params: { slug: string } }) {
           ))}
         </div>
       ) : null}
-      <MDXRemote source={post.content} />
+      <MDXRemote source={post.content} components={mdxComponents} />
       <HelpfulVote />
       <SimplePoll />
+      <div className="mt-4 flex gap-2 flex-wrap">
+        {post.tags?.map((t) => (
+          <a key={t} href={`/tag/${encodeURIComponent(t)}`} className="px-2 py-1 rounded-full border border-black/10 dark:border-white/10 text-xs">#{t}</a>
+        ))}
+      </div>
       <RelatedPosts category={post.category} currentSlug={post.slug} />
       <div className="mt-10"><Comments /></div>
       <BackToTop />

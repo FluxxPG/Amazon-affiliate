@@ -1,11 +1,14 @@
 export function buildAmazonAffiliateUrl(rawUrl: string): string {
   try {
     const url = new URL(rawUrl);
-    const tag = process.env.NEXT_PUBLIC_AMAZON_AFFILIATE_TAG;
-    if (tag && !url.searchParams.has("tag")) {
-      url.searchParams.set("tag", tag);
+    // If it's an Amazon link, route through /go to enable geo tags and tracking
+    if (url.hostname.includes("amazon.")) {
+      const site = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+      const go = new URL("/go", site || "http://localhost:3000");
+      go.searchParams.set("url", url.toString());
+      return go.toString();
     }
-    return url.toString();
+    return rawUrl;
   } catch {
     return rawUrl;
   }

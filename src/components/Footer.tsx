@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-black/10 dark:border-white/10">
-      <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-gray-600 dark:text-gray-300">
+    <footer className="mt-20 border-t border-black/10 dark:border-white/10">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 text-sm text-gray-600 dark:text-gray-300">
         <div className="flex flex-col md:flex-row justify-between gap-6">
           <p className="max-w-lg">
             Tech Guide Hub is reader-supported. When you buy through links on our site, we may earn an affiliate commission.

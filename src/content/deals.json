@@ -1,0 +1,28 @@
+[
+  {
+    "category": "phones",
+    "title": "Great Indian Festival: Phone Deals",
+    "items": [
+      { "name": "Value Phone A", "url": "https://www.amazon.in/dp/B0PHONESA" },
+      { "name": "Camera Phone B", "url": "https://www.amazon.in/dp/B0PHONEBB" },
+      { "name": "Battery Champ C", "url": "https://www.amazon.in/dp/B0PHONECC" }
+    ]
+  },
+  {
+    "category": "laptops",
+    "title": "Great Indian Festival: Laptop Deals",
+    "items": [
+      { "name": "Student Laptop X", "url": "https://www.amazon.in/dp/B0LAPTOPX" },
+      { "name": "Ultrabook Y", "url": "https://www.amazon.in/dp/B0LAPTPY" },
+      { "name": "Gaming Laptop Z", "url": "https://www.amazon.in/dp/B0LAPTPZ" }
+    ]
+  },
+  {
+    "category": "tvs",
+    "title": "Great Indian Festival: TV Deals",
+    "items": [
+      { "name": "55-inch 4K TV", "url": "https://www.amazon.in/dp/B0TV55555" },
+      { "name": "120Hz Gaming TV", "url": "https://www.amazon.in/dp/B0TV120HZ" }
+    ]
+  }
+]
