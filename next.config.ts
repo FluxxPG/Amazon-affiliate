@@ -1,13 +1,8 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
-const withMDX = createMDX({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [require("remark-gfm")],
-    rehypePlugins: [require("rehype-slug"), [require("rehype-autolink-headings"), { behavior: "wrap" }]],
-  },
-});
+// Keep MDX config simple to ensure mdx-rs options remain serializable
+const withMDX = createMDX({ extension: /\.mdx?$/ });
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
@@ -18,9 +13,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "m.media-amazon.com" },
     ],
   },
-  experimental: {
-    mdxRs: true,
-  },
+  experimental: { mdxRs: true },
 };
 
 export default withMDX(nextConfig);
