@@ -1,4 +1,4 @@
-export const metadata = { title: "Newsletter" };
+"use client";
 
 export default function NewsletterPage() {
   return (

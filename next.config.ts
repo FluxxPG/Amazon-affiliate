@@ -5,6 +5,9 @@ import createMDX from "@next/mdx";
 const withMDX = createMDX({ extension: /\.mdx?$/ });
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: __dirname,
+  },
   pageExtensions: ["ts", "tsx", "mdx"],
   images: {
     remotePatterns: [
