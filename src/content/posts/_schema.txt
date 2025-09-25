@@ -1,0 +1,13 @@
+Frontmatter fields:
+- title: string
+- slug: string
+- category: string
+- date: string (ISO)
+- author: string
+- tags: string[]
+- affiliateLinks: { label: string, href: string }[]
+- featuredImage: string
+- excerpt: string
+- featured: boolean
+
+
