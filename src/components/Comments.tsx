@@ -1,11 +1,11 @@
 "use client";
-import Giscus from "giscus";
+import Giscus from "@giscus/react";
 
 export default function Comments() {
-  const repo = process.env.NEXT_PUBLIC_GISCUS_REPO ?? "";
-  const repoId = process.env.NEXT_PUBLIC_GISCUS_REPO_ID ?? "";
-  const category = process.env.NEXT_PUBLIC_GISCUS_CATEGORY ?? "General";
-  const categoryId = process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID ?? "";
+  const repo = process.env.NEXT_PUBLIC_GISCUS_REPO as `${string}/${string}` | undefined;
+  const repoId = process.env.NEXT_PUBLIC_GISCUS_REPO_ID as string | undefined;
+  const category = (process.env.NEXT_PUBLIC_GISCUS_CATEGORY as string | undefined) ?? "General";
+  const categoryId = process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID as string | undefined;
   if (!repo || !repoId || !categoryId) return null;
   return (
     <Giscus
